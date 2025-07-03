@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  titanic-api:
+    build: .
+    container_name: titanic-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models
+      - ./registry:/app/registry
+      - ./data:/app/data
+    restart: always
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+  auto-trainer:
+    build: .
+    container_name: auto-trainer
+    depends_on:
+      - titanic-api
+    volumes:
+      - ./models:/app/models
+      - ./registry:/app/registry
+      - ./data:/app/data
+    restart: always
+    command: python scripts/auto_trainer.py
