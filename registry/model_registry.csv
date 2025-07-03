@@ -1,0 +1,4 @@
+model_path,registered_at,accuracy
+trained_model.pkl,2025-07-03T15:12:55.211237,0.8044692737430168
+models/model_v2.pkl,2025-07-03T16:30:41.261103,1.0
+models/model_v3.pkl,2025-07-03T17:02:57.241166,1.0
